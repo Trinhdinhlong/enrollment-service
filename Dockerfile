@@ -15,4 +15,4 @@ COPY src /app/src
 RUN mvn clean install -DskipTests
 
 # Chạy ứng dụng (hãy thay your-app.jar bằng tên thực tế)
-CMD ["java", "-jar", "target/enrollment-service-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/enrollment-service-0.0.1-SNAPSHOT.war"]
