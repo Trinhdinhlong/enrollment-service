@@ -15,7 +15,10 @@ import java.util.List;
 public class EnrollmentController {
 
     private final EnrollmentService enrollmentService;
-
+    @GetMapping()
+    public ResponseEntity<List<Enrollment>> getEnrollments() {
+        return ResponseEntity.ok(enrollmentService.getAllEnrollments());
+    }
     @PostMapping
     public ResponseEntity<Enrollment> enroll(@RequestBody EnrollmentRequest request) {
         return ResponseEntity.ok(enrollmentService.enroll(request));

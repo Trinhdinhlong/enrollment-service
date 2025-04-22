@@ -15,6 +15,10 @@ import java.util.List;
 public class EnrollmentService {
 
     private final EnrollmentRepository enrollmentRepository;
+    public List<Enrollment> getAllEnrollments() {
+        return enrollmentRepository.findAll();
+    }
+
 
     public Enrollment enroll(EnrollmentRequest request) {
         boolean exists = enrollmentRepository.findByUserIdAndCourseId(request.getUserId(), request.getCourseId()).isPresent();
