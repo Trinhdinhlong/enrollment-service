@@ -40,4 +40,8 @@ public class EnrollmentController {
     public ResponseEntity<List<Enrollment>> getEnrollmentsByCourse(@PathVariable Integer courseId) {
         return ResponseEntity.ok(enrollmentService.getByCourseId(courseId));
     }
+    @GetMapping("/check-enrollment")
+    public boolean checkEnrollment(@RequestParam Integer userId, @RequestParam Integer courseId) {
+        return enrollmentService.isEnrolled(userId, courseId);
+    }
 }

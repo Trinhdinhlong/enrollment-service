@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,7 +41,10 @@ public class EnrollmentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Enrollment not found"));
         enrollmentRepository.delete(enrollment);
     }
-
+    public boolean isEnrolled(Integer userId, Integer courseId) {
+        Optional<Enrollment> enrollment = enrollmentRepository.findByUserIdAndCourseId(userId, courseId);
+        return enrollment.isPresent();  // Trả về true nếu đã tồn tại, false nếu không
+    }
     public List<Enrollment> getByUserId(Integer userId) {
         return enrollmentRepository.findByUserId(userId);
     }
