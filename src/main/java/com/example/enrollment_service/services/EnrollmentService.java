@@ -5,6 +5,7 @@ import com.example.enrollment_service.exceptions.ResourceNotFoundException;
 import com.example.enrollment_service.models.Enrollment;
 import com.example.enrollment_service.repositorys.EnrollmentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,6 @@ public class EnrollmentService {
     public List<Enrollment> getAllEnrollments() {
         return enrollmentRepository.findAll();
     }
-
 
     public Enrollment enroll(EnrollmentRequest request) {
         boolean exists = enrollmentRepository.findByUserIdAndCourseId(request.getUserId(), request.getCourseId()).isPresent();
